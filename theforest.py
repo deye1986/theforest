@@ -5,6 +5,7 @@
 import sys
 from time import sleep
 
+
 def type_writer(x): # on second thought, were gonna up the speed and use this function for long paragraphs
     '''apply a typewriter style graphic to the output in the terminal'''
     for char in str(x): # probably best to use a for loop here, leave it be.
@@ -33,10 +34,11 @@ def game_loop():
 
     choice_1 = ''
     player_one = ''
-    level1 = True
-    level2_1 = False
-    level2_2 = False
-    ending = False
+    level1 = True # bridge
+    level2_1 = False # vines
+    level2_2 = False # warlock
+    troll = False
+    ending = False # 
     
     
     credits = '''
@@ -118,7 +120,7 @@ def game_loop():
     You lose a substantial portion of your hp in the struggle.
             ''')                       
             level2_1 = False
-            level2_2 = True
+            troll = True
             
         else:
             type_writer('''
@@ -161,7 +163,7 @@ def game_loop():
     the warlock, but he has badly hurt you in the process...
                 ''')
             level2_2 = False
-            ending = True     
+            troll = True    
 
         elif choice_1 == '2':
             type_writer ('''
@@ -178,11 +180,75 @@ def game_loop():
         else:
             type_writer('''
     Invalid input, choose 1, or 2 !
-            ''')
+        ''')
         continue
 
+    while troll == True:
+        type_writer('''
+    You slowly make your way through the forest, still wary and hurt 
+    from your previous encounter, you turn around a corner and see a 
+    menacing troll staring down at you less than ten feet away.  As 
+    you turn to attempt to flee he exclaims \"Please no go!\" in a 
+    distraught voice. You turn around and he explains \"Me lonely, this 
+    only path to other side, since bridge fall me unemployed.\" He hangs 
+    his head in despair. \"You play game with me?\" You agree, slightly
+     confused but with a forced smile on your face.'
+        ''')
+        type_writer('''
+    With a shrewd look, he asks \"Ok what is wet and see through?\"
+        ''')
+        troll_response_one = input('>>  ')
+        if troll_response_one == "water".lower():
+            type_writer("The troll claps his hands in glee and exclaims \"You smart like me, me try another!\"")
+            troll = False
+            troll_2 = True
+            
+        else:
+            type_writer('''
+    He smirks and says \"That one too hard, but you get right soon. Me give hint, you drink it when no drinking blood\"
+        ''')
+            continue
+
+    while troll_2 == True:
+        type_writer('''
+    Scratching his head he asks \"What is blue and up there?\" He references up to the sky with one large, dirty finger.    
+        ''')
+        troll_response_2 = input('>>  ')
+        if troll_response_2 == 'SKY'.lower():
+            type_writer('''
+    \"Woah you get it, me starting to think you smarter than me\" Me think of another!      
+            ''')
+            troll_2 = False
+            troll_3 = True
+        else:
+            type_writer('''
+    \"You no so smart, me give hint, it had white poofs there and sometimes water drop from it\"        
+            ''')
+            continue
+
+    while troll_3 == True:
+        type_writer('''
+    He thinks for a painful amount of time, and his eyes light up and 
+    he asks \"Ok, ok, me know! Who is the handsomest troll in the 
+    forest?\" He looks expectantly at you, a slight smile on his brutish face.     
+        ''')
+        troll_response_3 = input('>>  ')
+        if troll_response_3 == 'YOU'.lower():
+            troll_3 = False
+            ending = True
+            type_writer('''
+    \"Yes! Me handsomest troll in whole world not just forest! You do well, you pass.\"        
+            ''')
+        else:
+            type_writer('''
+    He glares down at you, clearly enraged and thuds the ground with his large foot and 
+    screams \"NO, ME THE HANDSOMEST TROLL IN THE FOREST, YOU PAY FOR STUPID\"
+    The troll then smacks down with his giant club, crushing you and continues with his tantrum.       
+            ''')
+            game_over()
+
     while ending == True:
-        
+       
         type_writer('''
     You are walking down the path and see a faint blue glow in the distance
             ''')
@@ -202,7 +268,7 @@ def game_loop():
 
         if choice1== "1":
             type_writer('''
-    Whilst sneaking around the brush to avoid this mysterious woman's head suddenly raises 
+    Whilst sneaking around the brush to avoid this mysterious woman, her head suddenly raises 
     and glares at the place you are hidden, in an ethereal voice she exclaims \"Foolish mortal, 
     you believe yourself hidden? Your cowardice must be punished.\"You feel your feet leave 
     the ground as you fly through the air into the lake and drown.
